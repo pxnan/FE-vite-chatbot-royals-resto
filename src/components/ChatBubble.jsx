@@ -4,7 +4,7 @@ export default function ChatBubble({ sender, text }) {
         <div className="ml-5 mr-5">
             <div className={`chat ${isUser ? "chat-end" : "chat-start"}`}>
                 <div
-                    className={`chat-bubble ${isUser ? "chat-bubble-primary text-white" : "chat-bubble-secondary text-white"}`}
+                    className={`chat-bubble ${isUser ? "bg-neutral-800 text-white" : "bg-white text-black"}`}
                 >
                     {text}
                 </div>

@@ -1,24 +1,33 @@
 import React, { useState, useEffect } from "react";
 
-const ListUnknownPertanyaan = ({ apiURL }) => {
+const ListUnknownPertanyaan = ({ apiURL, interval = 5000 }) => {
     const [unknownPertanyaan, setUnknownPertanyaan] = useState([]);
 
     useEffect(() => {
+        let isMounted = true; // untuk menghindari memory leak
         const fetchData = async () => {
             try {
-                const response = await fetch(apiURL);
-                if (!response.ok) {
-                    throw new Error("Failed to fetch data");
-                }
+                const response = await fetch(apiURL, { cache: "no-store" });
+                if (!response.ok) throw new Error("Failed to fetch data");
                 const data = await response.json();
-                setUnknownPertanyaan(data);
+                if (isMounted) setUnknownPertanyaan(data);
             } catch (error) {
                 console.error("Error fetching data:", error);
             }
         };
 
+        // fetch pertama saat mount
         fetchData();
-    }, [apiURL]);
+
+        // polling setiap interval (default 5000ms = 5 detik)
+        const timer = setInterval(fetchData, interval);
+
+        // cleanup saat unmount
+        return () => {
+            isMounted = false;
+            clearInterval(timer);
+        };
+    }, [apiURL, interval]);
 
     return (
         <div className="list rounded-box shadow-md">
@@ -28,13 +37,13 @@ const ListUnknownPertanyaan = ({ apiURL }) => {
                 <ul className="space-y-3">
                     {unknownPertanyaan.map((item, index) => (
                         <li
-                            className="list-row bg-base-200 p-3 rounded-md flex gap-3"
+                            className="list-row bg-black border border-neutral-800 p-3 rounded-md flex gap-3"
                             key={item.id}
                         >
-                            <div className="bg-base-300 p-3 rounded-md text-lg font-semibold">
+                            <div className="flex justify-center items-center bg-neutral-800 w-14 p-3 rounded-md text-lg font-semibold">
                                 {index + 1}
                             </div>
-                            <div className="bg-base-300 p-3 rounded-md text-lg font-semibold flex-1">
+                            <div className="bg-black border border-neutral-800 p-3 rounded-md text-lg font-semibold flex-1">
                                 {item.pertanyaan}
                             </div>
                         </li>

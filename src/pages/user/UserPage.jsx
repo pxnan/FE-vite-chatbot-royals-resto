@@ -3,6 +3,7 @@ import { useState, useEffect, useRef } from "react";
 import ChatWindow from "../../components/ChatWindow";
 import ChatInput from "../../components/ChatInput";
 import { sendQuestion } from "../../api";
+import Navbar from '../../components/Navbar';
 
 
 const UserPage = () => {
@@ -41,19 +42,24 @@ const UserPage = () => {
     };
 
     return (
-        <div className="flex flex-col items-center justify-center min-h-screen p-6 sm:p-7 bg-base-300">
-            <h1 className="text-2xl sm:text-3xl font-bold mb-5 sm:mb-7 text-center">
-                🤖 Royal's Resto Chatbot
-            </h1>
+        <div className="flex flex-col h-screen bg-black">
+            {/* === Navbar (tetap di atas) === */}
+            <Navbar />
 
-            <div className="w-full bg-base-200 shadow-xl rounded-box flex flex-col h-[80vh] p-2 sm:p-4">
-                {/* Chat window */}
-                <div className="flex-1 overflow-y-auto flex flex-col-reverse space-y-2 space-y-reverse scrollbar-thin scrollbar-thumb-dark">
-                    <ChatWindow messages={[...messages].reverse()} loading={loading} />
+            {/* === Area Chat Scrollable (balon dari bawah) === */}
+            <div className="flex-1 overflow-y-auto p-4 sm:p-6 flex flex-col-reverse">
+                <div className="max-w-3xl mx-auto w-full flex flex-col space-y-3">
+                    {/* urutan dibalik agar pesan terbaru di bawah */}
+                    <ChatWindow messages={[...messages]} loading={loading} />
+                    <div ref={chatEndRef} />
                 </div>
-                <div ref={chatEndRef} />
-                {/* Input */}
-                <ChatInput onSend={handleSend} loading={loading} />
+            </div>
+
+            {/* === Input tetap di bawah === */}
+            <div className="sticky bottom-0 z-50 md:pb-4">
+                <div className="max-w-3xl bg-black border border-neutral-800 mx-auto w-full p-3 sm:p-4 md:rounded-2xl">
+                    <ChatInput onSend={handleSend} loading={loading} />
+                </div>
             </div>
         </div>
     );
