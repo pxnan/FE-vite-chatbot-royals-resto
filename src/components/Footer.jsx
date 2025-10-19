@@ -1,8 +1,8 @@
 import React from "react";
 
-const Footer = () => {
+const  Footer = () => {
     return (
-        <footer className="footer footer-center border-t border-neutral-800 p-4 bg-black">
+        <footer className="footer footer-center border-t text-white border-neutral-800 p-4 bg-black">
                 <p>Copyright © 2025 - Royal's Resto</p>
         </footer>
     );

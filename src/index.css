@@ -2,15 +2,17 @@
 @plugin "daisyui";
 
 @plugin "daisyui" {
-    themes: light --default;
+    themes: black --default;
 }
 
 .bg-santafe {
     background-color: #AD734E;
 }
+
 .bg-rabel {
     background-color: #451D07;
 }
+
 .bg-merino {
     background-color: #F5EBE2;
 }
@@ -18,9 +20,11 @@
 .bg-dasar {
     background-color: #f6f1ec;
 }
+
 .bg-cardinal {
     background-color: #d12323;
 }
+
 .bg-deco {
     background-color: #dbd294;
 }
@@ -28,15 +32,19 @@
 .text-santafe {
     color: #AD734E;
 }
+
 .text-rabel {
     color: #451D07;
 }
+
 .text-merino {
     color: #F5EBE2;
 }
+
 .text-cardinal {
     color: #d12323;
 }
+
 .text-deco {
     color: #dbd294;
 }
