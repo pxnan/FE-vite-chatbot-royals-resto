@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-const ListUnknownPertanyaan = ({ apiURL, interval = 5000 }) => {
+const ListUnknownPertanyaan = ({ apiURL }) => {
     const [unknownPertanyaan, setUnknownPertanyaan] = useState([]);
 
     useEffect(() => {
@@ -18,16 +18,7 @@ const ListUnknownPertanyaan = ({ apiURL, interval = 5000 }) => {
 
         // fetch pertama saat mount
         fetchData();
-
-        // polling setiap interval (default 5000ms = 5 detik)
-        const timer = setInterval(fetchData, interval);
-
-        // cleanup saat unmount
-        return () => {
-            isMounted = false;
-            clearInterval(timer);
-        };
-    }, [apiURL, interval]);
+    }, [apiURL]);
 
     return (
         <div className="list rounded-box shadow-md">
