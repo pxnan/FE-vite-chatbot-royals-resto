@@ -47,7 +47,6 @@ export default function ChatInput({ onSend, loading }) {
                 {loading ? (
                     <>
                         <span className="loading loading-spinner"></span>
-                        Mengirim...
                     </>
                 ) : (
                     "Kirim"
