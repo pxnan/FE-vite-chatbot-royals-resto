@@ -4,6 +4,7 @@ import ChatWindow from "../../components/ChatWindow";
 import ChatInput from "../../components/ChatInput";
 import { sendQuestion } from "../../api";
 import Navbar from '../../components/Navbar';
+import Footer from '../../components/Footer';
 
 
 const UserPage = () => {
@@ -61,6 +62,7 @@ const UserPage = () => {
                     <ChatInput onSend={handleSend} loading={loading} />
                 </div>
             </div>
+            <Footer />
         </div>
     );
 };

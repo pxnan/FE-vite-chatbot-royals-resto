@@ -1,6 +1,7 @@
 import React from "react";
 import ListUnknownPertanyaan from "../../components/ListUnknownPertanyaan";
 import Navbar from "../../components/Navbar";
+import Footer from "../../components/Footer";
 
 const AdminPage = () => {
     const getUnknownPertanyaan = "http://127.0.0.1:5000/pertanyaan-unknown";
@@ -16,6 +17,7 @@ const AdminPage = () => {
                     </div>
                 </div>
             </div>
+            <Footer/>
         </div>
     );
 };
