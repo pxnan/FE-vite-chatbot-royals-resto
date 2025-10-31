@@ -101,7 +101,7 @@ const UserPage = () => {
                                         <button
                                             key={i}
                                             onClick={() => handleAmbiguousOptionClick(opt)}
-                                            className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-400 text-left mx-5 cursor-pointer"
+                                            className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-white hover:text-black text-left mx-5 cursor-pointer transition-all"
                                         >
                                             {opt}
                                         </button>
