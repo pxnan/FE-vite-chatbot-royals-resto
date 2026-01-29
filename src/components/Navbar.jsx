@@ -5,23 +5,23 @@ const Navbar = () => {
     const location = useLocation();
 
     return (
-        <div className="navbar bg-black shadow-lg sticky top-0 z-50 border-b border-neutral-800">
+        <div className="navbar bg-white shadow-lg sticky top-0 z-50 border-b border-gray-300">
             <div className="flex w-full justify-between px-5 items-center">
-                <Link to={"/"} className="text-xl text-white font-semibold">
+                <Link to={"/"} className="text-xl font-semibold">
                     Royal's Resto <span className='text-blue-500 font-bold'>Bot</span>
                 </Link>
 
                 {location.pathname === '/' ? (
                     <Link
                         to={"/admin"}
-                        className='text-white hover:text-blue-500 transition-all'
+                        className='hover:text-blue-500 transition-all'
                     >
                         Dashboard
                     </Link>
                 ) : (
                     <Link
                         to={"/"}
-                        className='text-white hover:text-blue-500 transition-all'
+                        className='hover:text-blue-500 transition-all'
                     >
                         Home
                     </Link>

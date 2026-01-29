@@ -85,7 +85,7 @@ const UserPage = () => {
 
 
     return (
-        <div className="flex flex-col h-screen bg-black overflow-hidden">
+        <div className="flex flex-col h-screen overflow-hidden">
             <Navbar />
 
             <div className="flex-1 overflow-y-auto">
@@ -101,7 +101,7 @@ const UserPage = () => {
                                         <button
                                             key={i}
                                             onClick={() => handleAmbiguousOptionClick(opt)}
-                                            className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-white hover:text-black text-left mx-5 cursor-pointer transition-all"
+                                            className="bg-yellow-400 px-4 py-2 rounded hover:bg-yellow-500 text-left mx-5 cursor-pointer transition-all"
                                         >
                                             {opt}
                                         </button>
@@ -115,8 +115,8 @@ const UserPage = () => {
                 </div>
             </div>
 
-            <div className="sticky bottom-0 z-50 bg-black">
-                <div className="max-w-3xl mx-auto md:mb-3 w-auto p-3 sm:p-4 border-t md:border md:rounded-xl border-neutral-800">
+            <div className="sticky bottom-0 z-50">
+                <div className="max-w-3xl mx-auto md:mb-3 w-auto p-3 sm:p-4 border-t md:border md:rounded-xl border-gray-300">
                     <ChatInput onSend={handleSend} loading={loading} />
                 </div>
                 <Footer />

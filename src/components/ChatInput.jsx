@@ -32,7 +32,7 @@ export default function ChatInput({ onSend, loading }) {
                 ref={inputRef} // <-- ref ditambahkan
                 type="text"
                 placeholder="Tulis pertanyaan..."
-                className="input bg-black rounded-md border-neutral-800 text-white input-primary p-3 flex-1 min-w-[150px] focus:outline-none focus:ring-1 focus:ring-blue-500"
+                className="input rounded-md border-gray-500 input-primary p-3 flex-1 min-w-[150px] focus:outline-none focus:border-none focus:ring-1 focus:ring-blue-500"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={handleKeyPress}
@@ -40,7 +40,7 @@ export default function ChatInput({ onSend, loading }) {
             />
 
             <button
-                className="btn bg-neutral-800 rounded-md text-neutral-400 hover:bg-neutral-700 hover:text-white border-none flex items-center gap-2 min-w-[100px]"
+                className="btn bg-blue-500 rounded-md text-white hover:bg-blue-600 hover:text-white border-none flex items-center gap-2 min-w-[100px]"
                 onClick={handleSend}
                 disabled={loading}
             >
