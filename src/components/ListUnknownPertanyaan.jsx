@@ -125,7 +125,7 @@ const ListUnknownPertanyaan = ({ apiURL }) => {
                             className="list-row border border-gray-300 p-3 rounded-md flex gap-3 shadow-md bg-white"
                         >
                             <div className="flex justify-center items-center bg-blue-500 text-white w-14 p-3 rounded-md text-lg font-semibold">
-                                {item.id}
+                                {1 + unknownPertanyaan.indexOf(item)}
                             </div>
                             <div className="bg-blue-500 p-3 rounded-md text-white text-lg font-semibold flex-1">
                                 {item.pertanyaan}

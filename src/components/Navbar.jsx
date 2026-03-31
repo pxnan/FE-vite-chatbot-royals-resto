@@ -10,22 +10,6 @@ const Navbar = () => {
                 <Link to={"/"} className="text-xl font-semibold">
                     Royal's Resto <span className='text-blue-500 font-bold'>Bot</span>
                 </Link>
-
-                {location.pathname === '/' ? (
-                    <Link
-                        to={"/admin"}
-                        className='hover:text-blue-500 transition-all'
-                    >
-                        Dashboard
-                    </Link>
-                ) : (
-                    <Link
-                        to={"/"}
-                        className='hover:text-blue-500 transition-all'
-                    >
-                        Home
-                    </Link>
-                )}
             </div>
         </div>
     );
