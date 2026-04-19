@@ -1,12 +1,34 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const NavbarAdmin = ({ title }) => {
-    const handleLogout = () => {
-        // Hapus token/session jika ada
-        localStorage.removeItem('token');
-        localStorage.removeItem('user');
+    const navigate = useNavigate();
+    const apiBaseURL = "http://127.0.0.1:5000";
+
+    const handleLogout = async () => {
+        const token = localStorage.getItem('admin_token');
+        
+        if (token) {
+            try {
+                await fetch(`${apiBaseURL}/logout`, {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                        'Content-Type': 'application/json'
+                    }
+                });
+            } catch (err) {
+                console.error('Logout error:', err);
+            }
+        }
+        
+        // Hapus semua data dari localStorage
+        localStorage.removeItem('admin_token');
+        localStorage.removeItem('admin_data');
+        localStorage.removeItem('token_expires');
+        
         // Redirect ke halaman login
-        window.location.href = '/login';
+        navigate('/login');
     };
 
     return (
@@ -23,8 +45,11 @@ const NavbarAdmin = ({ title }) => {
             </div>
             <button 
                 onClick={handleLogout}
-                className='cursor-pointer text-red-700 py-1 px-2 rounded-md hover:bg-base-100 transition-colors'
+                className='cursor-pointer text-red-700 py-1 px-2 rounded-md hover:bg-base-100 transition-colors flex items-center gap-1'
             >
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                </svg>
                 Logout
             </button>
         </nav>

@@ -18,7 +18,7 @@ const SidebarAdmin = () => {
     };
 
     return (
-        <div className="drawer-side is-drawer-close:overflow-visible shadow-lg">
+        <div className="drawer-side is-drawer-close:overflow-visible">
             <label htmlFor="my-drawer-4" aria-label="close sidebar" className="drawer-overlay"></label>
             <div className="flex min-h-full flex-col items-start bg-base-200 is-drawer-close:w-14 is-drawer-open:w-64">
                 {/* Sidebar content here */}
@@ -30,7 +30,6 @@ const SidebarAdmin = () => {
                             className={`is-drawer-close:tooltip is-drawer-close:tooltip-right ${getLinkClass(isActive('/admin'))}`}
                             data-tip="Dashboard"
                         >
-                            {/* Home icon */}
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" strokeLinejoin="round" strokeLinecap="round" strokeWidth="2" fill="none" stroke="currentColor" className="my-1.5 inline-block size-4">
                                 <path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"></path>
                                 <path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
@@ -39,14 +38,13 @@ const SidebarAdmin = () => {
                         </Link>
                     </li>
                     
-                    {/* Kelola Dataset (dulu Tambah Data Pertanyaan) */}
+                    {/* Kelola Dataset */}
                     <li>
                         <Link 
                             to={"/admin/input-pertanyaan?tab=dataset"} 
                             className={`is-drawer-close:tooltip is-drawer-close:tooltip-right ${getLinkClass('/admin/input-pertanyaan', 'dataset')}`}
                             data-tip="Kelola Dataset"
                         >
-                            {/* Database/Table icon */}
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" strokeLinejoin="round" strokeLinecap="round" strokeWidth="2" fill="none" stroke="currentColor" className="my-1.5 inline-block size-4">
                                 <path d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4"></path>
                             </svg>
@@ -61,7 +59,6 @@ const SidebarAdmin = () => {
                             className={`is-drawer-close:tooltip is-drawer-close:tooltip-right ${getLinkClass('/admin/input-pertanyaan', 'unknown')}`}
                             data-tip="Pertanyaan Tidak Dikenali"
                         >
-                            {/* Question mark icon */}
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" strokeLinejoin="round" strokeLinecap="round" strokeWidth="2" fill="none" stroke="currentColor" className="my-1.5 inline-block size-4">
                                 <path d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                             </svg>
@@ -76,7 +73,6 @@ const SidebarAdmin = () => {
                             className={`is-drawer-close:tooltip is-drawer-close:tooltip-right ${getLinkClass('/admin/input-pertanyaan', 'add')}`}
                             data-tip="Tambah Pertanyaan"
                         >
-                            {/* Plus icon */}
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" strokeLinejoin="round" strokeLinecap="round" strokeWidth="2" fill="none" stroke="currentColor" className="my-1.5 inline-block size-4">
                                 <path d="M12 5v14M5 12h14"></path>
                             </svg>
@@ -91,7 +87,6 @@ const SidebarAdmin = () => {
                             className={`is-drawer-close:tooltip is-drawer-close:tooltip-right ${getLinkClass('/admin/latih-model')}`}
                             data-tip="Latih Model"
                         >
-                            {/* Training/Model icon */}
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" strokeLinejoin="round" strokeLinecap="round" strokeWidth="2" fill="none" stroke="currentColor" className="my-1.5 inline-block size-4">
                                 <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
                                 <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
@@ -103,14 +98,13 @@ const SidebarAdmin = () => {
                         </Link>
                     </li>
 
-                    {/* Kelola Admin */}
+                    {/* Kelola Admin - Hanya muncul untuk Super Admin */}
                     <li>
                         <Link 
                             to={"/admin/kelola-admin"} 
                             className={`is-drawer-close:tooltip is-drawer-close:tooltip-right ${getLinkClass('/admin/kelola-admin')}`}
                             data-tip="Kelola Admin"
                         >
-                            {/* Users/Admin icon */}
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" strokeLinejoin="round" strokeLinecap="round" strokeWidth="2" fill="none" stroke="currentColor" className="my-1.5 inline-block size-4">
                                 <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
                                 <circle cx="12" cy="7" r="4"></circle>
