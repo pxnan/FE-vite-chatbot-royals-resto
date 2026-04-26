@@ -32,7 +32,7 @@ const NavbarAdmin = ({ title }) => {
     };
 
     return (
-        <nav className="navbar w-full bg-base-300 flex justify-between">
+        <nav className="navbar w-full bg-base-300 flex justify-between sticky top-0 z-50 shadow-md transition-all duration-300">
             <div className='flex items-center'>
                 <label htmlFor="my-drawer-4" aria-label="open sidebar" className="btn btn-square btn-ghost">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" strokeLinejoin="round" strokeLinecap="round" strokeWidth="2" fill="none" stroke="currentColor" className="size-5">

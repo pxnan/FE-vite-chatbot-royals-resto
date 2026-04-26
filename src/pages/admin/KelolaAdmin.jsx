@@ -314,16 +314,16 @@ const KelolaAdmin = () => {
 
     const getRoleBadge = (role) => {
         if (role === 'super_admin') {
-            return <span className="badge badge-primary">Super Admin</span>;
+            return <span className="badge h-auto badge-primary">Super Admin</span>;
         }
-        return <span className="badge badge-secondary">Admin</span>;
+        return <span className="badge h-auto badge-secondary">Admin</span>;
     };
 
     const getStatusBadge = (isActive) => {
         if (isActive) {
-            return <span className="badge badge-success">Aktif</span>;
+            return <span className="badge h-auto badge-success">Aktif</span>;
         }
-        return <span className="badge badge-error">Tidak Aktif</span>;
+        return <span className="badge h-auto badge-error">Tidak Aktif</span>;
     };
 
     // Jika bukan super admin, tampilkan pesan akses ditolak

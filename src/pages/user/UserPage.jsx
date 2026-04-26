@@ -40,7 +40,6 @@ const UserPage = () => {
             const data = await sendQuestion(question);
 
             if (data.status === "ambigu" && data.opsi_pertanyaan) {
-                // Jika ambiguous, tampilkan tombol opsi pertanyaan
                 const botMessage = {
                     sender: "bot",
                     text: data.jawaban,
@@ -48,7 +47,6 @@ const UserPage = () => {
                 };
                 setMessages((prev) => [...prev, botMessage]);
             } else {
-                // Status ok atau unknown
                 const botMessage = {
                     sender: "bot",
                     text: data.jawaban,
@@ -65,35 +63,42 @@ const UserPage = () => {
         }
     };
 
-    // ==== Fungsi untuk menangani klik opsi pertanyaan ambigu ====
     const handleAmbiguousOptionClick = (option) => {
-        // Hapus seluruh pesan bot terakhir yang punya ambiguousOptions
         setMessages(prev => {
             const newMessages = [...prev];
             for (let i = newMessages.length - 1; i >= 0; i--) {
                 if (newMessages[i].sender === "bot" && newMessages[i].ambiguousOptions) {
-                    newMessages.splice(i, 1); // hapus pesan itu
-                    break; // hapus hanya satu pesan terakhir
+                    newMessages.splice(i, 1);
+                    break;
                 }
             }
             return newMessages;
         });
-
-        // Kirim pertanyaan yang dipilih
         handleSend(option);
     };
 
+    // Fungsi untuk menghapus semua histori chat
+    const handleClearHistory = () => {
+        const welcomeMessage = {
+            sender: "bot",
+            text: "Hai selamat datang! Ada yang bisa saya bantu?",
+        };
+        setMessages([welcomeMessage]);
+        setHasWelcomed(true);
+    };
 
     return (
         <div className="flex flex-col h-screen overflow-hidden">
-            <Navbar />
+            <Navbar 
+                onClearHistory={handleClearHistory} 
+                hasMessages={messages.length > 1} 
+            />
 
             <div className="flex-1 overflow-y-auto">
                 <div className="min-h-full flex flex-col-reverse p-4 sm:p-6">
                     <div className="max-w-3xl mx-auto w-full space-y-3">
                         <ChatWindow messages={messages} loading={loading} />
 
-                        {/* Tampilkan tombol opsi pertanyaan ambigu */}
                         {messages.map((msg, idx) =>
                             msg.sender === "bot" && msg.ambiguousOptions ? (
                                 <div key={`ambiguity-${idx}`} className="flex flex-col space-y-2 my-2">

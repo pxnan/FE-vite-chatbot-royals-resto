@@ -191,7 +191,7 @@ const AdminPage = () => {
                                                 </svg>
                                             </div>
                                             <div className="flex-1 min-w-0">
-                                                <div className="stat-title text-gray-500 text-xs md:text-sm truncate">Pertanyaan Tidak Dikenali</div>
+                                                <div className="stat-title text-gray-500 text-xs md:text-sm truncate">Tidak Dikenali</div>
                                                 <div className="stat-value text-warning text-xl md:text-2xl lg:text-3xl font-bold truncate">{stats.unknownQuestions}</div>
                                             </div>
                                         </div>
