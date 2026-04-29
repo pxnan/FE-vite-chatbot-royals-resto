@@ -393,47 +393,65 @@ const ManageDataset = ({ apiBaseURL, onDataChange }) => {
                     )}
 
                     {/* Pagination */}
-                    {totalPages > 1 && (
-                        <div className="flex justify-center items-center gap-4 mt-6">
-                            <button
-                                className="btn btn-sm"
-                                onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
-                                disabled={currentPage === 1}
-                            >
-                                « Sebelumnya
-                            </button>
-                            <div className="flex gap-1">
-                                {[...Array(Math.min(5, totalPages))].map((_, i) => {
-                                    let pageNum;
-                                    if (totalPages <= 5) {
-                                        pageNum = i + 1;
-                                    } else if (currentPage <= 3) {
-                                        pageNum = i + 1;
-                                    } else if (currentPage >= totalPages - 2) {
-                                        pageNum = totalPages - 4 + i;
-                                    } else {
-                                        pageNum = currentPage - 2 + i;
-                                    }
-                                    return (
-                                        <button
-                                            key={pageNum}
-                                            className={`btn btn-sm ${currentPage === pageNum ? 'btn-primary' : 'btn-ghost'}`}
-                                            onClick={() => setCurrentPage(pageNum)}
-                                        >
-                                            {pageNum}
-                                        </button>
-                                    );
-                                })}
-                            </div>
-                            <button
-                                className="btn btn-sm"
-                                onClick={() => setCurrentPage(prev => Math.min(totalPages, prev + 1))}
-                                disabled={currentPage === totalPages}
-                            >
-                                Selanjutnya »
-                            </button>
-                        </div>
-                    )}
+{totalPages > 1 && (
+    <div className="flex justify-center items-center gap-4 mt-6">
+        <button
+            className="btn btn-sm"
+            onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
+            disabled={currentPage === 1}
+        >
+            « Sebelumnya
+        </button>
+        
+        {/* Pagination Desktop - tampil di layar md ke atas */}
+        <div className="hidden md:flex gap-1">
+            {[...Array(Math.min(5, totalPages))].map((_, i) => {
+                let pageNum;
+                if (totalPages <= 5) {
+                    pageNum = i + 1;
+                } else if (currentPage <= 3) {
+                    pageNum = i + 1;
+                } else if (currentPage >= totalPages - 2) {
+                    pageNum = totalPages - 4 + i;
+                } else {
+                    pageNum = currentPage - 2 + i;
+                }
+                return (
+                    <button
+                        key={pageNum}
+                        className={`btn btn-sm ${currentPage === pageNum ? 'btn-primary' : 'btn-ghost'}`}
+                        onClick={() => setCurrentPage(pageNum)}
+                    >
+                        {pageNum}
+                    </button>
+                );
+            })}
+        </div>
+
+        {/* Pagination Mobile - tampil di layar di bawah md (dropdown) */}
+        <div className="flex md:hidden">
+            <select
+                className="select select-bordered select-sm"
+                value={currentPage}
+                onChange={(e) => setCurrentPage(parseInt(e.target.value))}
+            >
+                {[...Array(totalPages)].map((_, i) => (
+                    <option key={i + 1} value={i + 1}>
+                        Halaman {i + 1} dari {totalPages}
+                    </option>
+                ))}
+            </select>
+        </div>
+
+        <button
+            className="btn btn-sm"
+            onClick={() => setCurrentPage(prev => Math.min(totalPages, prev + 1))}
+            disabled={currentPage === totalPages}
+        >
+            Selanjutnya »
+        </button>
+    </div>
+)}
 
                     {/* Info Pagination */}
                     <div className="text-center text-xs text-gray-500 mt-4">

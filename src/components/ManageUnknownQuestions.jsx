@@ -198,13 +198,13 @@ const ManageUnknownQuestions = ({ apiBaseURL, onDataChange }) => {
                         <div>
                             <h2 className="card-title text-xl">
                                 Pertanyaan Tidak Dikenali
-                                <div className="badge badge-warning ml-2">{totalData} Pertanyaan</div>
+                                <div className="badge badge-warning h-auto ml-2">{totalData} Pertanyaan</div>
                             </h2>
                             <p className="text-sm text-gray-500 mt-1">
                                 Daftar pertanyaan yang tidak dapat dijawab oleh chatbot
                             </p>
                         </div>
-                        <div className="flex gap-2">
+                        <div className="flex flex-wrap gap-2">
                             <button
                                 className="btn btn-primary btn-sm"
                                 onClick={navigateToAddTab}

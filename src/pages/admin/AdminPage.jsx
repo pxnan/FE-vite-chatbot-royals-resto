@@ -271,7 +271,7 @@ const AdminPage = () => {
                                     <div className="card-body p-4 md:p-6">
                                         <h2 className="card-title text-lg md:text-xl mb-3 md:mb-4">
                                             Pertanyaan Tidak Dikenali Terbaru
-                                            <div className="badge badge-warning ml-2">{stats.unknownQuestions} Total</div>
+                                            <div className="badge badge-warning h-auto ml-2">{stats.unknownQuestions} Total</div>
                                         </h2>
                                         {recentUnknown.length === 0 ? (
                                             <p className="text-gray-500 text-center py-6 md:py-8 text-sm">
@@ -314,7 +314,7 @@ const AdminPage = () => {
                                     <div className="card-body p-4 md:p-6">
                                         <h2 className="card-title text-lg md:text-xl mb-3 md:mb-4">
                                             Data Terbaru yang Ditambahkan
-                                            <div className="badge badge-info ml-2">5 Terakhir</div>
+                                            <div className="badge badge-info h-auto ml-2">5 Terakhir</div>
                                         </h2>
                                         {recentData.length === 0 ? (
                                             <p className="text-gray-500 text-center py-6 md:py-8 text-sm">
